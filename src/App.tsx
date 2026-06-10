@@ -110,9 +110,12 @@ export default function App() {
           </div>
 
           <div className="footer-divider" />
-          <p className="small mb-0" style={{ color: '#9ca3af' }}>
-            &copy; {new Date().getFullYear()} Chiscloud Deliveries. All rights
-            reserved.
+          <p className="small mb-0 d-flex flex-wrap justify-content-center align-items-center gap-2" style={{ color: '#9ca3af' }}>
+            <span>&copy; {new Date().getFullYear()} Chiscloud Deliveries. All rights reserved.</span>
+            <span style={{ color: '#d1d5db' }} className="d-none d-sm-inline">•</span>
+            <span className="fw-bold" style={{ color: '#6b7280', letterSpacing: '0.05em', fontSize: '0.8rem' }}>
+              A PRODUCT OF CHISCLOUD TECHNOLOGIES
+            </span>
           </p>
         </div>
       </footer>
