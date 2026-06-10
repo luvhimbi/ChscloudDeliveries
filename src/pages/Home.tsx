@@ -1,8 +1,7 @@
 import {
   FaGooglePlay, FaClock, FaBuilding,
   FaShoppingCart, FaMapMarkerAlt, FaStore, FaBolt,
-  FaEnvelope, FaPhoneAlt, FaMapPin, FaChevronDown, FaChevronUp,
-  FaUtensils, FaMotorcycle
+  FaEnvelope, FaPhoneAlt, FaMapPin, FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
@@ -115,19 +114,12 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <img
-                src="/app_screenshot.png"
-                alt="Chiscloud App Mockup"
-                className="img-fluid position-relative"
-                style={{
-                  width: '160%',        // increase size
-                  maxWidth: 'none',     // remove width limit
-                  objectFit: 'contain',
-                  marginBottom: '-80px',
-                  zIndex: 10,
-                  filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))'
-                }}
-              />
+              <div className="hero-phone-frame">
+                <div className="step-phone-notch" />
+                <div className="step-phone-screen">
+                  <img src="/app_screenshot.jpeg" alt="Chiscloud App Mockup" />
+                </div>
+              </div>
             </motion.div>
           </div>
 
@@ -216,20 +208,23 @@ export default function Home() {
               { step: '3', title: 'Select Restaurant', desc: 'Find your favorite local restaurant or vendor.', img: '/step3.jpg' },
               { step: '4', title: 'Choose Items', desc: 'Select your preferred items from the vendor menu.', img: '/step4.jpg' },
               { step: '5', title: 'Add to Cart', desc: 'Set quantities and add your selected items to your cart.', img: '/step5.jpg' },
-              { step: '6', title: 'Checkout & Track', desc: 'Pay securely and track your delivery in real-time!', img: null }
+              { step: '6', title: 'Checkout & Track', desc: 'Pay securely and track your delivery in real-time!', img: '/step6.jpeg' }
             ].map((item, i) => (
               <motion.div className="col-md-4 text-center" key={i} variants={fadeUpVariant}>
-                <div className="mb-4 d-flex align-items-center justify-content-center" style={{ borderRadius: '16px', overflow: 'hidden', height: '240px', backgroundColor: '#f3f4f6', border: '1px solid #e5e7eb' }}>
-                  {item.img ? (
-                    <img src={item.img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-                  ) : (
-                    <div style={{ padding: '2rem' }}>
-                      <FaShoppingCart size={60} color="#A31D1D" style={{ opacity: 0.2 }} />
-                    </div>
-                  )}
+                <div className="step-phone-frame mb-4">
+                  <div className="step-phone-notch" />
+                  <div className="step-phone-screen">
+                    {item.img ? (
+                      <img src={item.img} alt={item.title} />
+                    ) : (
+                      <div className="d-flex align-items-center justify-content-center h-100">
+                        <FaShoppingCart size={48} color="#A31D1D" style={{ opacity: 0.15 }} />
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-center mx-auto mb-3" 
-                     style={{ width: 32, height: 32, borderRadius: '50%', backgroundColor: '#A31D1D', color: 'white', fontSize: '1rem', fontWeight: 'bold' }}>
+                     style={{ width: 36, height: 36, borderRadius: '50%', backgroundColor: '#A31D1D', color: 'white', fontSize: '0.95rem', fontWeight: 'bold' }}>
                   {item.step}
                 </div>
                 <h5 className="fw-bold mb-2">{item.title}</h5>
@@ -329,85 +324,15 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="col-lg-5 text-center position-relative">
-                <img 
-                  src="/app_screenshot.png" 
-                  alt="Chiscloud App Mockup" 
-                  className="img-fluid cta-phone-img" 
-                />
+              <div className="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+                <div className="cta-phone-frame">
+                  <div className="step-phone-notch" />
+                  <div className="step-phone-screen">
+                    <img src="/app_screenshot.jpeg" alt="Chiscloud App Mockup" />
+                  </div>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ===== PARTNER WITH US ===== */}
-      <section id="partner" className="section-custom" style={{ backgroundColor: '#ffffff' }}>
-        <div className="container py-4 py-lg-5">
-          <motion.div 
-            className="text-center mb-5"
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <span className="badge-custom">Grow With Us</span>
-            <h2 className="display-5 fw-bold mb-3" style={{ letterSpacing: '-0.02em' }}>Partner With Chiscloud</h2>
-            <p style={{ color: '#6b7280', fontSize: '1.05rem', maxWidth: '600px', margin: '0 auto' }}>
-              Whether you want to expand your food business or earn competitive income as a driver, we provide the platform to help you succeed.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="row g-4"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {/* Restaurant Partner Card */}
-            <motion.div className="col-md-6" variants={fadeUpVariant}>
-              <div className="partner-card">
-                <div>
-                  <div className="partner-icon-wrap">
-                    <FaUtensils size={28} color="#A31D1D" />
-                  </div>
-                  <h4 className="fw-bold mb-3">Partner Your Restaurant</h4>
-                  <p className="small mb-4" style={{ color: '#6b7280', lineHeight: 1.7 }}>
-                    Reach thousands of hungry local customers across Centurion, Tembisa, Pretoria Central, and Sunnyside. 
-                    We handle all the delivery logistics and tracking so you can focus entirely on preparation. 
-                    Receive orders seamlessly, track delivery riders, and grow your sales dashboard.
-                  </p>
-                </div>
-                <div className="pt-2">
-                  <a href="mailto:info@chiscloud.co.za?subject=Restaurant Partner Inquiry" className="btn-custom btn-custom-primary w-100 py-3">
-                    REGISTER RESTAURANT
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Driver Partner Card */}
-            <motion.div className="col-md-6" variants={fadeUpVariant}>
-              <div className="partner-card">
-                <div>
-                  <div className="partner-icon-wrap">
-                    <FaMotorcycle size={28} color="#A31D1D" />
-                  </div>
-                  <h4 className="fw-bold mb-3">Drive &amp; Earn With Us</h4>
-                  <p className="small mb-4" style={{ color: '#6b7280', lineHeight: 1.7 }}>
-                    Looking for a flexible way to earn competitive income? Join our rider network. 
-                    Work whenever you want, track your earnings in real-time in the app, and deliver food/beverages 
-                    to grateful neighbors. All you need is a valid license, a smartphone, and your own vehicle.
-                  </p>
-                </div>
-                <div className="pt-2">
-                  <a href="mailto:thembisotshisikhawe@gmail.com?subject=Driver Application Inquiry" className="btn-custom btn-custom-secondary w-100 py-3">
-                    APPLY AS DRIVER
-                  </a>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -447,6 +372,18 @@ export default function Home() {
                     </motion.div>
                   </div>
                 ))}
+              </div>
+
+              {/* Partner CTA Callout */}
+              <div className="partner-callout mt-5">
+                <h5 className="fw-bold mb-2">Are you a restaurant owner or delivery driver?</h5>
+                <p className="small mb-3" style={{ color: '#6b7280', lineHeight: 1.7 }}>
+                  We're always looking for new restaurant partners and reliable drivers to join the Chiscloud family. 
+                  Expand your reach, grow your business, or earn flexible income — get in touch with us today.
+                </p>
+                <a href="/#contact" className="btn-custom btn-custom-primary">
+                  CONTACT US TO PARTNER
+                </a>
               </div>
             </div>
           </motion.div>
